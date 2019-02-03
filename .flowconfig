@@ -1,6 +1,13 @@
 [ignore]
+.*/node_modules/webpack/.*
+.*/node_modules/webpack-.*/.*
+.*/node_modules/@babel/.*
+.*/node_modules/babel-.*/.*
 
 [include]
+
+[untyped]
+.*/node_modules/@emotion/core/node_modules/.*
 
 [libs]
 

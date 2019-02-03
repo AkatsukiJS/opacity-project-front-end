@@ -1,6 +1,8 @@
 /* @flow */
-import React, { type StatelessFunctionalComponent } from 'react'
+/** @jsx jsx */
+import { type StatelessFunctionalComponent } from 'react'
 import styled from '@emotion/styled'
+import { css, jsx } from '@emotion/core'
 
 type Props = {
   children: string,
@@ -10,7 +12,7 @@ type Props = {
 const Hue = ({ className, children, title }) => (
   <div className={className}>
     <h1>{title}</h1>
-    <div>{children}</div>
+    <div css={css`border: 9px solid black;`}>{children}</div>
   </div>
 )
 
