@@ -1,6 +1,6 @@
 # Opacity-Project Front-end
 
-A front-end project to Opacity-Project
+A internal front-end project to Opacity-Project by **Akatsuki JS**
 
 ### :construction: STATUS: work in progress
 
@@ -14,9 +14,71 @@ Libs/Frameworks utilized:
 - Git-hooks: husky
 - Styles: Emotion JS
 
-## :pencil2: More info
+##  :book: Scripts
 
-Comming soon...
+#### Install Dependencies
+
+```shell
+yarn install
+```
+
+#### Running
+**1. Development**
+```shell
+yarn dev
+```
+
+**2. Production**
+
+```shell
+yarn prod
+```
+
+#### Typecheck
+```shell
+yarn flow
+```
+
+#### Prettier and Linter
+**1. Linter**
+```shell
+yarn lint:fix
+```
+
+**2. Prettier + Linter**
+```shell
+yarn prettier
+```
+
+#### Storybook
+```shell
+yarn storybook
+```
+
+## Contributing
+
+All commits message should be in conventional-commits style:
+
+This project uses [commitlint](https://github.com/conventional-changelog/commitlint#what-is-commitlint)
+
+
+> **type(scope?)**: message
+>
+> _scope_ is optional
+
+types:
+- build
+- ci
+- chore
+- docs
+- feat
+- fix
+- perf
+- refactor
+- revert
+- style
+- test
+
 
 ## License
 
