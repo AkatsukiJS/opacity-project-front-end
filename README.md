@@ -4,10 +4,10 @@ A internal front-end project to Opacity-Project by **Akatsuki JS**
 
 ### :construction: STATUS: work in progress
 
-Libs/Frameworks utilized:
+Libs utilized:
 
 - Flavor: flow
-- Framework: React
+- Lib: React
 - Formatter: prettier-standard
 - Linter: standard
 - Bundler: Webpack 4
