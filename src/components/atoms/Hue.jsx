@@ -12,7 +12,14 @@ type Props = {
 const Hue = ({ className, children, title }) => (
   <div className={className}>
     <h1>{title}</h1>
-    <div css={css`border: 9px solid black;`}>{children}</div>
+    <div
+      css={css`
+        border: 9px solid black;
+        background-color: rebeccapurple;
+      `}
+    >
+      {children}
+    </div>
   </div>
 )
 
@@ -22,9 +29,9 @@ const HueStyled = (styled(Hue)`
     color: rebeccapurple;
   }
   div {
-    color: black;
+    color: white;
     font-size: 2rem;
-    font-family: monospace;
+    font-family: ${props => props.theme.fontFamily.ropa};
   }
 `: StatelessFunctionalComponent<Props>)
 
