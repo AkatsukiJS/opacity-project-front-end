@@ -15,7 +15,7 @@
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "lint-staged": {
-    "*.js": [
+    "*.{jsx,js}": [
       "yarn prettier",
       "flow",
       "git add"
