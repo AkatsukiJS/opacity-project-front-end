@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import styled from '@emotion/styled'
-import Hue from './components/atoms/Hue.jsx'
+import Button from './components/atoms/Button/Button.jsx'
 import theme from './theme.js'
 import { ThemeProvider } from 'emotion-theming'
 
@@ -11,12 +11,10 @@ type Props = {
 
 const App = ({ className }: Props) => (
   <ThemeProvider theme={theme}>
-    <div className={className}>
-      <Hue title='hue hue br'>Another hue hue</Hue>
-    </div>
+    <Button>OpacityProj</Button>
   </ThemeProvider>
 )
 
 export default styled(App)`
-  background-color: orange;
+  background-color: white;
 `
