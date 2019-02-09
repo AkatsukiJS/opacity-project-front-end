@@ -12,7 +12,8 @@
     "flow": "flow",
     "lint:fix": "standard --fix --parser babel-eslint --plugin flowtype 'src/**/*.{jsx,js}'",
     "prettier": "prettier-standard 'src/**/*.{jsx,js}' && yarn lint:fix",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "build-storybook": "build-storybook -c .storybook"
   },
   "lint-staged": {
     "*.{jsx,js}": [
@@ -35,7 +36,11 @@
     "@babel/preset-react": "^7.0.0",
     "@commitlint/cli": "^7.5.0",
     "@commitlint/config-conventional": "^7.5.0",
-    "@storybook/react": "^4.1.11",
+    "@storybook/addon-actions": "5.0.0-beta.2",
+    "@storybook/addon-info": "5.0.0-beta.2",
+    "@storybook/addon-knobs": "5.0.0-beta.2",
+    "@storybook/addon-options": "5.0.0-beta.2",
+    "@storybook/react": "5.0.0-beta.2",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-emotion": "^10.0.6",
