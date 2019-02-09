@@ -3,6 +3,7 @@
 .*/node_modules/webpack-.*/.*
 .*/node_modules/@babel/.*
 .*/node_modules/babel-.*/.*
+.*/.storybook/.*
 
 [include]
 

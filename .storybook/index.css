@@ -1,0 +1,25 @@
+table {
+    border-spacing: 0;
+    padding: 2rem 0;
+    font-size: 14px;
+}
+
+thead {
+    background-color: #DC234F;
+    color: white;
+}
+
+th {
+    text-transform: capitalize;
+}
+
+th,
+td {
+    padding: 0.5rem;
+}
+
+th,
+td,
+tr {
+    border: none;
+}
