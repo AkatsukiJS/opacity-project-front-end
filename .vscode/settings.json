@@ -1,4 +1,5 @@
 {
   "flow.useNPMPackagedFlow": true,
-  "flow.runOnAllFiles": true
+  "flow.showStatus": true,
+  "javascript.validate.enable": false
 }
