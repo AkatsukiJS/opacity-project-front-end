@@ -9,7 +9,7 @@
 A internal front-end project to Opacity-Project by **Akatsuki JS**
 
 For members learn a few about:
-- best pratiques
+- best practices
 - atomic design
 - react
 - css in js
