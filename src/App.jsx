@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import styled from '@emotion/styled'
-import Button from './components/atoms/Button/Button.jsx'
+import { Button } from './components'
 import theme from './theme.js'
 import { ThemeProvider } from 'emotion-theming'
 
@@ -11,7 +11,7 @@ type Props = {
 
 const App = ({ className }: Props) => (
   <ThemeProvider theme={theme}>
-    <Button>OpacityProj</Button>
+    <Button type='secondary'>OpacityProj</Button>
   </ThemeProvider>
 )
 
