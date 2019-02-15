@@ -10,14 +10,15 @@
     "dev": "webpack-dev-server --hot --progress --open --config webpack.dev.js",
     "prod": "NODE_ENV='production' webpack --progress --config webpack.prod.js",
     "flow": "flow",
-    "lint:fix": "standard --fix --parser babel-eslint --plugin flowtype 'src/**/*.{jsx,js}'",
-    "prettier": "prettier-standard 'src/**/*.{jsx,js}' && yarn lint:fix",
+    "lint:fix": "standard --fix --parser babel-eslint --plugin flowtype \"src/**/*.{jsx,js}\"",
+    "prettier": "prettier-standard \"src/**/*.{jsx,js}\" && yarn lint:fix",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build-storybook": "build-storybook -c .storybook"
   },
   "lint-staged": {
     "*.{jsx,js}": [
-      "yarn prettier",
+      "prettier-standard",
+      "standard --fix --parser babel-eslint --plugin flowtype",
       "git add"
     ]
   },
