@@ -1,5 +1,8 @@
 {
   "flow.useNPMPackagedFlow": true,
   "flow.showStatus": true,
-  "javascript.validate.enable": false
+  "javascript.validate.enable": false,
+  "colorize.languages": [
+    "javascript"
+  ]
 }
