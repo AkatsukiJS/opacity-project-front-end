@@ -29,7 +29,7 @@ export default {
     Medium: '8px'
   },
   borderSize: {
-    radioButton: '2px',
+    RadioButton: '2px'
   },
   boxShadow: {
     Container: '0px 3px 2px rgba(79, 79, 79, 0.25)',

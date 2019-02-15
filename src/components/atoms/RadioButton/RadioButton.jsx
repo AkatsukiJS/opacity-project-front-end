@@ -16,7 +16,7 @@ const style = ({ theme, type, isSelected }) => css`
   height: 1rem;
   cursor: pointer;
   background: none;
-  border: solid ${theme.borderSize.radioButton};
+  border: solid ${theme.borderSize.RadioButton};
   border-color: ${isSelected ? theme.color.Crimson : theme.color.DarkGray};
   display: flex;
   align-items: center;
