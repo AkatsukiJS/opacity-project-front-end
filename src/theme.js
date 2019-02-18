@@ -20,9 +20,9 @@ export default {
     Ropa: 'Ropa Sans, serif'
   },
   fontSize: {
-    Small: '12px',
-    Medium: '16px',
-    Bigger: '22px'
+    Small: '0.85rem',
+    Medium: '1rem',
+    Large: '1.25rem'
   },
   borderRadius: {
     Small: '4px',
