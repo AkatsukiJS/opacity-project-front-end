@@ -41,8 +41,9 @@ const RadioButtonLabeled = (props: Props) => {
 }
 
 RadioButtonLabeled.defaultProps = {
-  label: 'Click me',
-  false: false
+  isSelected: true,
+  /** Label  of radio button labeled */
+  children: 'Radio Button Labeled'
 }
 
 export default RadioButtonLabeled
