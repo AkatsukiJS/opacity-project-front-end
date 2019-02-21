@@ -6,7 +6,7 @@ import { text, select } from '@storybook/addon-knobs'
 const group = 'GROUP-LABEL'
 
 const kindOptions = ['primary', 'basic', 'grizzly']
-const kindDefault = 'primary'
+const kindDefault = 'basic'
 
 const sizeOptions = ['small', 'medium', 'large']
 const sizeDefault = 'medium'

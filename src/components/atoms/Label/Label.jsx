@@ -2,6 +2,7 @@
 /** @jsx jsx */
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
+import { capitalize } from '../../../lib/utils'
 
 type Kind = 'primary' | 'basic' | 'grizzly'
 type Size = 'small' | 'medium' | 'large'
@@ -15,7 +16,17 @@ type Props = {
   children?: string
 }
 
-const style = () => css``
+const kindColor = {
+  primary: 'Crimson',
+  basic: 'Black',
+  grizzly: 'DarkGray'
+}
+
+const style = ({ theme, size, kind }) => css`
+  font-family: ${theme.fontFamily.Ropa};
+  font-size: ${theme.fontSize[capitalize(size)]};
+  color: ${theme.color[kindColor[kind]]};
+`
 
 const StyledLabel = styled.span`
   ${style}
@@ -24,7 +35,7 @@ const StyledLabel = styled.span`
 const Label = (props: Props) => <StyledLabel {...props} />
 
 Label.defaultProps = {
-  kind: 'primary',
+  kind: 'basic',
   size: 'medium',
   children: 'label'
 }
