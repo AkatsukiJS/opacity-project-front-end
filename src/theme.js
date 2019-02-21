@@ -24,6 +24,11 @@ export default {
     Medium: '1rem',
     Large: '1.25rem'
   },
+  iconSize: {
+    Small: '15px',
+    Medium: '19px',
+    Large: '24px'
+  },
   borderRadius: {
     Small: '4px',
     Medium: '8px'
