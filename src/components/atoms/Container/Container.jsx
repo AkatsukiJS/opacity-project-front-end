@@ -16,7 +16,12 @@ type Props = {
   children?: mixed
 }
 
-const style = () => css``
+const style = ({ theme, hasDropShadow, coner }) => css`
+  background: ${theme.color.White};
+  box-shadow: ${hasDropShadow ? theme.boxShadow.Container : 'none'};
+  font-family: ${theme.fontFamily.Ropa};
+  border-radius: ${coner.map(val => val + 'px').join(' ')};
+`
 
 const StyledContainer = styled.div`
   ${style}
