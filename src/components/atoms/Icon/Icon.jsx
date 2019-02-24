@@ -5,10 +5,11 @@ import { css, jsx } from '@emotion/core'
 import { capitalize } from '../../../lib/utils'
 
 type Size = 'small' | 'medium' | 'large'
+type Kind = 'plus' | 'minus' | 'close' | 'categories' | 'servers' | 'about'
 
 type Props = {
-  /** Url of icon image */
-  src: string,
+  /** Kind of icon */
+  kind: Kind,
   /** Size of icon */
   size?: Size,
   /** onClick handler */
@@ -33,18 +34,17 @@ const StyledIcon = styled.i`
 `
 
 const Icon = (props: Props) => {
-  const { src, ...others } = props
+  const { kind, ...others } = props
   return (
     <StyledIcon {...others}>
-      <img src={src} />
+      <img src={`/icons/${kind}.svg`} />
     </StyledIcon>
   )
 }
 
 Icon.defaultProps = {
-  kind: 'medium',
-  src:
-    'https://trello-attachments.s3.amazonaws.com/5b8dc7bb2b0fa353b5746a33/5c55a5a186fbfd47afbd76b1/1005da371d3d527551367bcf617c250e/x.png'
+  size: 'medium',
+  kind: 'plus'
 }
 
 export default Icon
