@@ -25,9 +25,9 @@ export default {
     Large: '1.25rem'
   },
   iconSize: {
-    Small: '15px',
-    Medium: '19px',
-    Large: '24px'
+    Small: '1rem',
+    Medium: '1.5rem',
+    Large: '2rem'
   },
   borderRadius: {
     Small: '4px',
@@ -39,5 +39,12 @@ export default {
   boxShadow: {
     Container: '0px 3px 2px rgba(79, 79, 79, 0.25)',
     Button: '0px 1px 4px #9F9F9F'
+  },
+  padding: {
+    Container: {
+      Small: '1rem',
+      Medium: '1.5rem',
+      Large: '2rem'
+    }
   }
 }
