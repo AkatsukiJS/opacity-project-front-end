@@ -24,6 +24,11 @@ export default {
     Medium: '1rem',
     Large: '1.25rem'
   },
+  selectSize: {
+    Small: '0.25rem',
+    Medium: '0.5rem',
+    Large: '1rem'
+  },
   borderRadius: {
     Small: '4px',
     Medium: '8px'
