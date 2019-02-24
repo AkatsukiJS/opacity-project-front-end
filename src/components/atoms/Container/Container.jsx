@@ -2,13 +2,14 @@
 /** @jsx jsx */
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
+import { capitalize } from '../../../lib/utils'
 
 type Size = 'small' | 'medium' | 'large'
 
 type Props = {
-  /** Type of button */
+  /** Border radius of container */
   coner?: number[],
-  /** Size of button */
+  /** Size of container */
   size?: Size,
   /** Dropshadow */
   hasDropShadow?: boolean,
@@ -16,11 +17,12 @@ type Props = {
   children?: mixed
 }
 
-const style = ({ theme, hasDropShadow, coner }) => css`
+const style = ({ theme, hasDropShadow, coner, size }) => css`
   background: ${theme.color.White};
   box-shadow: ${hasDropShadow ? theme.boxShadow.Container : 'none'};
   font-family: ${theme.fontFamily.Ropa};
   border-radius: ${coner.map(val => val + 'px').join(' ')};
+  padding: ${theme.padding.Container[capitalize(size)]};
 `
 
 const StyledContainer = styled.div`
