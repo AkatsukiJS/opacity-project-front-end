@@ -13,7 +13,7 @@ const sizeDefault = 'medium'
 
 const defaultLabel = 'this is a label atom'
 
-storiesOf('Label', module).add('default', () => {
+storiesOf('Atoms', module).add('Label', () => {
   const kind = select('Kind', kindOptions, kindDefault, group)
   const label = text('Label', defaultLabel, group)
   const size = select('Size', sizeOptions, sizeDefault, group)

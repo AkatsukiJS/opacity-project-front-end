@@ -13,7 +13,7 @@ const dropShadowDefault = true
 
 const contentDefault = 'This is a container atom'
 
-storiesOf('Container', module).add('default', () => {
+storiesOf('Atoms', module).add('Container', () => {
   const size = select('Size', sizeOptions, sizeDefault, group)
   const hasDropShadow = boolean('hasDropShadow', dropShadowDefault, group)
   const coner = array('Coner', conerDefault, ',', group)
