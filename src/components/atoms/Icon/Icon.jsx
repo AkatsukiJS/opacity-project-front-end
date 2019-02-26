@@ -3,9 +3,20 @@
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
 import { capitalize } from '../../../lib/utils'
+import ReactSVG from 'react-svg'
 
 type Size = 'small' | 'medium' | 'large'
 type Kind = 'plus' | 'minus' | 'close' | 'categories' | 'servers' | 'about'
+type Colors =
+  | 'LightCrimson'
+  | 'Crimson'
+  | 'DarkCrimson'
+  | 'LightestGray'
+  | 'LightGray'
+  | 'Gray'
+  | 'DarkGray'
+  | 'Black'
+  | 'White'
 
 type Props = {
   /** Kind of icon */
@@ -13,19 +24,24 @@ type Props = {
   /** Size of icon */
   size?: Size,
   /** onClick handler */
-  onClick?: () => mixed
+  onClick?: () => mixed,
+  /** Color */
+  color?: Colors
 }
 
-const style = ({ theme, size }) => css`
+const style = ({ theme, size, color }) => css`
   height: ${theme.iconSize[capitalize(size)]};
   width: ${theme.iconSize[capitalize(size)]};
   display: flex;
   align-items: center;
   justify-content: center;
 
-  img {
-    height: auto;
-    width: 100%;
+  svg {
+    height: ${theme.iconSize[capitalize(size)]};
+    width: ${theme.iconSize[capitalize(size)]};
+    * {
+      fill: ${theme.color[color]};
+    }
   }
 `
 
@@ -37,14 +53,15 @@ const Icon = (props: Props) => {
   const { kind, ...others } = props
   return (
     <StyledIcon {...others}>
-      <img src={`/icons/${kind}.svg`} />
+      <ReactSVG src={`/icons/${kind}.svg`} />
     </StyledIcon>
   )
 }
 
 Icon.defaultProps = {
   size: 'medium',
-  kind: 'plus'
+  kind: 'plus',
+  color: 'Crimson'
 }
 
 export default Icon

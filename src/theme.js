@@ -27,7 +27,7 @@ export default {
   iconSize: {
     Small: '1rem',
     Medium: '1.5rem',
-    Large: '2rem'
+    Large: '2.3rem'
   },
   selectSize: {
     Small: '0.25rem',
@@ -39,6 +39,7 @@ export default {
     Medium: '8px'
   },
   borderSize: {
+    TabBar: '1px',
     RadioButton: '2px'
   },
   boxShadow: {
