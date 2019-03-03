@@ -32,6 +32,7 @@ const style = ({ theme }) => css`
     justify-content: space-between;
     text-transform: uppercase;
     text-align: center;
+    box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.1);
 
     .op-dialog-box__titlebar_label {
       flex: 1;
@@ -66,6 +67,7 @@ const DialogBox = (props: Props) => {
         coner={[10, 10, 0, 0]}
         className='op-dialog-box__titlebar'
         size='small'
+        hasDropShadow={false}
       >
         <Label className='op-dialog-box__titlebar_label'>{title}</Label>
         <Icon kind='close' size='small' onClick={onClose} />
