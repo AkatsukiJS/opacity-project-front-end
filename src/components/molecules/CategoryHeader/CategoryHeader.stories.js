@@ -11,7 +11,7 @@ const subtitleDefault = CategoryHeader.defaultProps.subtitle
 
 const hasLineDefault = false
 
-storiesOf('CategoryHeader', module).add('default', () => {
+storiesOf('Molecules', module).add('CategoryHeader', () => {
   const hasDropShadow = boolean('hasDropShadow', dropShadowDefault, group)
   const title = text('Title', titleDefault, group)
   const subtitle = text('Subtitle', subtitleDefault, group)

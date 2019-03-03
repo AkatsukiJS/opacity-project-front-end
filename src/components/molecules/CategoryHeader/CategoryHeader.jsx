@@ -2,8 +2,7 @@
 /** @jsx jsx */
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
-import Container from '../../atoms/Container/Container'
-import Label from '../../atoms/Label/Label'
+import { Container, Label } from '../../../components'
 
 type Props = {
   /** Name of category */

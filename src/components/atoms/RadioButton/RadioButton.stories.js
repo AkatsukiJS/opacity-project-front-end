@@ -8,7 +8,7 @@ const group = 'GROUP-RADIO-BUTTON'
 const defaultValue = false
 const options = [true, false]
 
-storiesOf('RadioButton', module).add('Default', () => {
+storiesOf('Atoms', module).add('RadioButton', () => {
   const state = select('State', options, defaultValue, group)
 
   return (

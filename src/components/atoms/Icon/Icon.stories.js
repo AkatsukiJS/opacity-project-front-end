@@ -12,7 +12,7 @@ const sizeDefault = 'medium'
 const kindOptions = ['plus', 'minus', 'close', 'categories', 'servers', 'about']
 const kindDefault = 'plus'
 
-storiesOf('Icon').add('default', () => {
+storiesOf('Atoms').add('Icon', () => {
   const size = select('Size', sizeOptions, sizeDefault, group)
   const kind = select('Kind', kindOptions, kindDefault, group)
 
