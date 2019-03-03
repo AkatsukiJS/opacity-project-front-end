@@ -16,16 +16,13 @@ type Props = {
 
 const loading = keyframes`
   0% {
-    opacity: 0.8;
-    width: 25%;
+    background-position: 0%;
   }
   50% {
-    width: 90%;
-    opacity: 0.4;
+    background-position: 50%;
   }
   100% {
-    width: 25%;
-    opacity: 0.8;
+    background-position: 100%;
   }
 `
 
@@ -41,6 +38,7 @@ const style = ({ theme, size, label }) => css`
   border: none;
 
   :before {
+    width: 100%;
     margin: auto;
     color: ${theme.color.Black};
     line-height: ${Sizes[size]};
@@ -51,9 +49,13 @@ const style = ({ theme, size, label }) => css`
     display: block;
     height: ${Sizes[size]};
     border-radius: 0.5rem;
-    background-color: ${theme.color.LightGray};
+    background: linear-gradient(to right, ${theme.color.LightestGray}, ${
+  theme.color.LightGray
+}, ${theme.color.LightGray}, ${theme.color.LightestGray});
+    background-size: 50%;
+    background-repeat: repeat;
     padding: 0.25rem 0;
-    animation: ${loading} 2.5s ease-in-out infinite;
+    animation: ${loading} 1s linear infinite;
   }
 `
 
