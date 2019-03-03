@@ -16,23 +16,23 @@ type Props = {
 
 const loading = keyframes`
   0% {
-    opacity: 1;
+    opacity: 0.8;
     width: 25%;
   }
   50% {
     width: 90%;
-    opacity: 0.8;
+    opacity: 0.4;
   }
   100% {
     width: 25%;
-    opacity: 1;
+    opacity: 0.8;
   }
 `
 
 const Sizes = {
   small: '1rem',
-  medium: '1.5rem',
-  large: '2rem'
+  medium: '2rem',
+  large: '3rem'
 }
 
 const style = ({ theme, size, label }) => css`
@@ -43,6 +43,7 @@ const style = ({ theme, size, label }) => css`
   :before {
     margin: auto;
     color: ${theme.color.Black};
+    line-height: ${Sizes[size]};
     font-size: 1rem;
     font-family: ${theme.fontFamily.Ropa};
     text-align: center;
@@ -50,7 +51,7 @@ const style = ({ theme, size, label }) => css`
     display: block;
     height: ${Sizes[size]};
     border-radius: 0.5rem;
-    background-color: ${theme.color.LightestGray};
+    background-color: ${theme.color.LightGray};
     padding: 0.25rem 0;
     animation: ${loading} 2.5s ease-in-out infinite;
   }
