@@ -25,7 +25,7 @@ const colorOptions = [
 ]
 const colorDefault = Icon.defaultProps.color
 
-storiesOf('Icon').add('default', () => {
+storiesOf('Atoms').add('Icon', () => {
   const size = select('Size', sizeOptions, sizeDefault, group)
   const kind = select('Kind', kindOptions, kindDefault, group)
   const color = select('Color', colorOptions, colorDefault, group)

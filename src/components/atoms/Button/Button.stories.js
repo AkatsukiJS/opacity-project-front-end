@@ -15,7 +15,7 @@ const sizeDefault = 'medium'
 const dropShadowOptions = [false, true]
 const dropShadowDefault = false
 
-storiesOf('Button', module).add('default', () => {
+storiesOf('Atoms', module).add('Button', () => {
   const kind = select('Kind', kindOptions, kindDefault, group)
   const label = text('Label', 'button', group)
   const size = select('Size', sizeOptions, sizeDefault, group)

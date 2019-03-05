@@ -3,11 +3,10 @@
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
 import { capitalize } from '../../../lib/utils'
-import ReactSVG from 'react-svg'
 
 type Size = 'small' | 'medium' | 'large'
 type Kind = 'plus' | 'minus' | 'close' | 'categories' | 'servers' | 'about'
-type Colors =
+type Color =
   | 'LightCrimson'
   | 'Crimson'
   | 'DarkCrimson'
@@ -25,36 +24,54 @@ type Props = {
   size?: Size,
   /** onClick handler */
   onClick?: () => mixed,
-  /** Color */
-  color?: Colors
+  /** className */
+  className?: string,
+  /** color of icon */
+  color?: Color
 }
 
-const style = ({ theme, size, color }) => css`
-  height: ${theme.iconSize[capitalize(size)]};
-  width: ${theme.iconSize[capitalize(size)]};
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const icons = {
+  plus: '\\e903',
+  minus: '\\e905',
+  close: '\\e901',
+  categories: '\\e902',
+  servers: '\\e900',
+  about: '\\e904'
+}
 
-  svg {
-    height: ${theme.iconSize[capitalize(size)]};
-    width: ${theme.iconSize[capitalize(size)]};
-    * {
-      fill: ${theme.color[color]};
-    }
+const style = ({ theme, size, color, kind }) => css`
+  @font-face {
+    font-family: 'icomoon';
+    src:  url(${require('./fonts/icomoon.eot')});
+    src:  url(${require('./fonts/icomoon.eot')}) format('embedded-opentype'),
+      url(${require('./fonts/icomoon.ttf')}) format('truetype'),
+      url(${require('./fonts/icomoon.woff')}) format('woff'),
+      url(${require('./fonts/icomoon.svg')}) format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  font-family: 'icomoon';
+  font-size: ${theme.iconSize[capitalize(size)]};
+  :before{
+    content: '${icons[kind]}';
+    color: ${theme.color[color]};
   }
 `
 
-const StyledIcon = styled.i`
+const StyledIcon = styled.span`
   ${style}
 `
 
 const Icon = (props: Props) => {
-  const { kind, ...others } = props
+  const { kind, className, onClick, color, size } = props
   return (
-    <StyledIcon {...others}>
-      <ReactSVG src={`/icons/${kind}.svg`} />
-    </StyledIcon>
+    <StyledIcon
+      className={className}
+      onClick={onClick}
+      color={color}
+      size={size}
+      kind={kind}
+    />
   )
 }
 
