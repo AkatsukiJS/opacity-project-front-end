@@ -23,8 +23,7 @@ const colorOptions = [
   'Black',
   'White'
 ]
-
-const colorDefault = 'Crimson'
+const colorDefault = Icon.defaultProps.color
 
 storiesOf('Atoms').add('Icon', () => {
   const size = select('Size', sizeOptions, sizeDefault, group)
@@ -35,8 +34,8 @@ storiesOf('Atoms').add('Icon', () => {
     <Icon
       kind={kind}
       size={size}
-      onClick={action('Icon clicked')}
       color={color}
+      onClick={action('Icon clicked')}
     />
   )
 })
