@@ -23,7 +23,7 @@ const items = [
 
 const tabOptions = ['categories', 'servers', 'about']
 
-storiesOf('TabBar', module).add('example', () => {
+storiesOf('Molecules', module).add('TabBar', () => {
   const selected = select('Selected', tabOptions, selectedDefault, group)
   return (
     <TabBar onSelect={action(`onSelect:`)} selected={selected} items={items} />
