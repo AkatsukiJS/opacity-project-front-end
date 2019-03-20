@@ -8,7 +8,7 @@ const group = 'GROUP-RADIO-BUTTON-LABELED'
 const defaultValue = false
 const options = [true, false]
 
-storiesOf('RadioButtonLabeled', module).add('Default', () => {
+storiesOf('Atoms', module).add('RadioButtonLabeled', () => {
   const state = select('State', options, defaultValue, group)
   const label = text('Label', 'Radio button', group)
 

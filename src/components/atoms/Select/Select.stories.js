@@ -28,7 +28,7 @@ const placeholderDefault = 'Choose a option'
 
 const values = [null, ...optionsDefault.map(({ value }) => value)]
 
-storiesOf('Select', module).add('example', () => {
+storiesOf('Atoms', module).add('Select', () => {
   const size = select('Size', sizeOptions, sizeDefault, group)
   const options = object('Options', optionsDefault, group)
   const placeholder = text('Placeholder', placeholderDefault, group)
