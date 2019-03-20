@@ -12,9 +12,30 @@ const sizeDefault = 'medium'
 const kindOptions = ['plus', 'minus', 'close', 'categories', 'servers', 'about']
 const kindDefault = 'plus'
 
-storiesOf('Icon').add('default', () => {
+const colorOptions = [
+  'LightCrimson',
+  'Crimson',
+  'DarkCrimson',
+  'LightestGray',
+  'LightGray',
+  'Gray',
+  'DarkGray',
+  'Black',
+  'White'
+]
+const colorDefault = Icon.defaultProps.color
+
+storiesOf('Atoms').add('Icon', () => {
   const size = select('Size', sizeOptions, sizeDefault, group)
   const kind = select('Kind', kindOptions, kindDefault, group)
+  const color = select('Color', colorOptions, colorDefault, group)
 
-  return <Icon kind={kind} size={size} onClick={action('Icon clicked')} />
+  return (
+    <Icon
+      kind={kind}
+      size={size}
+      color={color}
+      onClick={action('Icon clicked')}
+    />
+  )
 })
