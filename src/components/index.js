@@ -16,5 +16,7 @@ export {
   default as CategoryHeader
 } from './molecules/CategoryHeader/CategoryHeader.jsx'
 export { default as DialogBox } from './molecules/DialogBox/DialogBox.jsx'
+export { default as Expander } from './molecules/Expander/Expander.jsx'
 
 // Organisms
+export { default as ServerCard } from './organisms/ServerCard/ServerCard.jsx'
