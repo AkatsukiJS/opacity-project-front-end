@@ -10,6 +10,7 @@ export {
   default as RadioButtonLabeled
 } from './atoms/RadioButtonLabeled/RadioButtonLabeled.jsx'
 export { default as Select } from './atoms/Select/Select.jsx'
+export { default as Hamburguer } from './atoms/Hamburguer/Hamburguer.jsx'
 
 // Molecules
 export {
