@@ -1,16 +1,27 @@
 /* @flow */
 /** @jsx jsx */
 import styled from '@emotion/styled'
+import { useState } from 'react'
 import { css, jsx } from '@emotion/core'
-import { Container, Hamburguer } from '../../../components'
+import {
+  Container,
+  Hamburguer,
+  ModalOverlay,
+  SideMenu
+} from '../../../components'
+
+type Link = {
+  href: string,
+  label: string
+}
 
 type Props = {
+  /** Link list */
+  links: Link[],
   /** Logo path */
   logo: string,
   /** Link logo */
   linkLogo: string,
-  /** onHamburguer handler */
-  onHamburguer: () => mixed,
   /** className */
   className?: string
 }
@@ -25,6 +36,10 @@ const style = ({ theme }) => css`
   .op__mainheader-container {
     display: flex;
     justify-content: space-between;
+
+    .op__mainheader-hamburguer {
+      z-index: 1000;
+    }
   }
   .op__mainheader-image {
     width: 100%;
@@ -43,7 +58,8 @@ const StyledMainHeader = styled.div`
 
 /** MainHeader component */
 const MainHeader = (props: Props) => {
-  const { logo, onHamburguer, className, linkLogo } = props
+  const { logo, className, linkLogo, links } = props
+  const [isOpenMenu, setOpenMenu] = useState(false)
   return (
     <StyledMainHeader className={className}>
       <Container size='small' className='op__mainheader-container'>
@@ -52,8 +68,17 @@ const MainHeader = (props: Props) => {
             <img src={logo} />
           </a>
         </div>
-        <Hamburguer onClick={onHamburguer} />
+        <Hamburguer
+          className='op__mainheader-hamburguer'
+          onClick={() => setOpenMenu(!isOpenMenu)}
+        />
       </Container>
+      <ModalOverlay isOpen={isOpenMenu} />
+      <SideMenu
+        links={links}
+        isOpen={isOpenMenu}
+        onHamburguer={() => setOpenMenu(false)}
+      />
     </StyledMainHeader>
   )
 }
