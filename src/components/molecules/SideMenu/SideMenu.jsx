@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
-import { Label, Hamburguer } from '../../index'
+import { Label } from '../../index'
 
 type Link = {
   label: string,
@@ -12,8 +12,6 @@ type Link = {
 type Props = {
   /** List of nav links */
   links: Link[],
-  /** onHamburguer handler */
-  onHamburguer?: () => mixed,
   /** isOpen flag */
   isOpen: boolean,
   /** imageFooter path */
@@ -39,6 +37,7 @@ const style = ({ theme }) => css`
   .op__sidemenu-header {
     display: flex;
     justify-content: flex-end;
+    padding: 1rem;
   }
 
   .op__sidemenu-content {
@@ -48,6 +47,14 @@ const style = ({ theme }) => css`
 
       a {
         text-decoration: none;
+
+        .op__sidemenu-label {
+          display: block;
+
+          :hover {
+            color: ${theme.color.Crimson};
+          }
+        }
       }
 
       li {
@@ -86,26 +93,20 @@ const StyledSideMenu = styled.nav`
 
 /** SideMenu component */
 const SideMenu = (props: Props) => {
-  const {
-    links = [],
-    className,
-    onHamburguer,
-    isOpen,
-    imageFooter = ''
-  } = props
+  const { links = [], className, isOpen, imageFooter = '' } = props
 
   return isOpen ? (
     <StyledSideMenu className={className}>
-      <div className='op__sidemenu-header'>
-        <Hamburguer onClick={onHamburguer} size='medium' />
-      </div>
+      <div className='op__sidemenu-header' />
       <div className='op__sidemenu-wrapper'>
         <div className='op__sidemenu-content'>
           <ul>
             {links.map(({ label, href }, key) => (
               <li key={key}>
                 <a href={href}>
-                  <Label size='large'>{label}</Label>
+                  <Label className='op__sidemenu-label' size='large'>
+                    {label}
+                  </Label>
                 </a>
               </li>
             ))}
