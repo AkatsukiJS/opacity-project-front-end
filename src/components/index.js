@@ -10,6 +10,8 @@ export {
   default as RadioButtonLabeled
 } from './atoms/RadioButtonLabeled/RadioButtonLabeled.jsx'
 export { default as Select } from './atoms/Select/Select.jsx'
+export { default as Hamburguer } from './atoms/Hamburguer/Hamburguer.jsx'
+export { default as ModalOverlay } from './atoms/ModalOverlay/ModalOverlay.jsx'
 
 // Molecules
 export {
@@ -17,6 +19,7 @@ export {
 } from './molecules/CategoryHeader/CategoryHeader.jsx'
 export { default as DialogBox } from './molecules/DialogBox/DialogBox.jsx'
 export { default as Expander } from './molecules/Expander/Expander.jsx'
+export { default as SideMenu } from './molecules/SideMenu/SideMenu.jsx'
 
 // Organisms
 export { default as ServerCard } from './organisms/ServerCard/ServerCard.jsx'
