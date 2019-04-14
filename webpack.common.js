@@ -34,6 +34,11 @@ module.exports = {
             cacheDirectory: true
           }
         }
+      },
+      {
+        test: /\.(png|svg|woff|ttf|eot)$/,
+        exclude: /node_modules/,
+        use: 'file-loader'
       }
     ]
   },
