@@ -1,7 +1,6 @@
 import React from 'react'
 import MainHeader from './MainHeader'
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
 import { text, object } from '@storybook/addon-knobs'
 
 const group = 'GROUP-MAIN-HEADER'
@@ -25,12 +24,5 @@ storiesOf('Organisms', module).add('MainHeader', () => {
   const logo = require('./logo.png')
   const link = text('linkLogo', 'https://link.foo', group)
   const linksList = object('links', linksDefault, group)
-  return (
-    <MainHeader
-      links={linksList}
-      logo={logo}
-      onHamburguer={action('[MainHeader]: onHamburguer')}
-      linkLogo={link}
-    />
-  )
+  return <MainHeader links={linksList} logo={logo} linkLogo={link} />
 })
