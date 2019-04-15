@@ -25,6 +25,7 @@ const Categories = ({ className }) => (
       </div>
       <div>
         <Select
+          isBlock
           options={categoriesList}
           onSelect={t => console.log(t)}
           className='op__categories__select'
