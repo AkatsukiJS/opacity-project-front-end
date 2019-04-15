@@ -53,11 +53,16 @@ const style = ({ theme, size = 'medium', isBlock }) => css`
     }
   }
 
-  .op__select-placeholder {
+  .op__select__placeholder-wrapper {
     color: ${theme.color.Crimson};
     display: flex;
     justify-content: space-between;
   }
+  .op__select__placeholder-title {
+    text-align: center;
+    width: 100%;
+  }
+
   .op__select-arrow {
     position: relative;
     content: '';
@@ -72,7 +77,7 @@ const style = ({ theme, size = 'medium', isBlock }) => css`
   .op__select-options {
     display: none;
   }
-  &.op__select-active {
+  &.op__select-active .op__select-wrapper {
     background-color: ${theme.color.White};
   }
   &.op__select-active .op__select-wrapper .op__select-options {
@@ -137,8 +142,11 @@ const Select = (props: Props) => {
       onClick={toggleActive}
     >
       <div className='op__select-wrapper'>
-        <div className='op__select-placeholder'>
-          <div>{selected}</div>
+        <div className='op__select__placeholder-wrapper'>
+          <div className='op__select__placeholder-title'>
+            {' '}
+            <span> {selected} </span>{' '}
+          </div>
           <div className='op__select-arrow' />
         </div>
         <div className='op__select-options'>
