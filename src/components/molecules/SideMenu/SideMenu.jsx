@@ -33,6 +33,7 @@ const style = ({ theme }) => css`
   min-width: 30vw;
   display: flex;
   flex-direction: column;
+  z-index: 10;
 
   .op__sidemenu-header {
     display: flex;
