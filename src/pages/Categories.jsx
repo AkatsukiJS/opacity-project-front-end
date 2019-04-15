@@ -30,6 +30,7 @@ const Categories = ({ className }) => (
           onSelect={t => console.log(t)}
           className='op__categories__select'
           value='null'
+          placeholder='Selecione'
         />
       </div>
       <Button hasDropShadow size='medium'>

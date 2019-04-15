@@ -5,7 +5,7 @@ import { css, jsx } from '@emotion/core'
 
 const toggleActive = function (event) {
   const select = event.currentTarget
-  select.classList.toggle('op__select-active')
+  select.classList.toggle('op__select--active')
 }
 
 type Size = 'small' | 'medium' | 'large'
@@ -77,10 +77,10 @@ const style = ({ theme, size = 'medium', isBlock }) => css`
   .op__select-options {
     display: none;
   }
-  &.op__select-active .op__select-wrapper {
+  &.op__select--active .op__select-wrapper {
     background-color: ${theme.color.White};
   }
-  &.op__select-active .op__select-wrapper .op__select-options {
+  &.op__select--active .op__select-wrapper .op__select-options {
     display: block;
     top: 100%;
     position: absolute;

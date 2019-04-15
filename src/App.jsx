@@ -46,5 +46,9 @@ const AppStyled = styled(App)`
   .op__app__mainheader {
     position: relative;
   }
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
 `
 export default AppStyled
