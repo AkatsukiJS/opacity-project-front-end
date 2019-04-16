@@ -3,7 +3,7 @@
 
 import styled from '@emotion/styled'
 import { jsx } from '@emotion/core'
-import { MainHeader } from './components'
+import { MainHeader, Label } from './components'
 import { Categories } from './pages'
 
 type Props = {
@@ -28,11 +28,16 @@ const linksList = [
 const App = ({ className }: Props) => (
   <div className={className}>
     <MainHeader
-      links={linksList}
       logo={require('../assets/logo.png')}
       linkLogo='#'
       className='op__app__mainheader'
-    />
+    >
+      {linksList.map((el, key) => (
+        <a href={el.href} key={key}>
+          <Label size='large'>{el.label}</Label>
+        </a>
+      ))}
+    </MainHeader>
     <Categories />
   </div>
 )
