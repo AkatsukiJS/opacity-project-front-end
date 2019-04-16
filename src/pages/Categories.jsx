@@ -4,6 +4,7 @@
 import { Button, Label, CategoryHeader, Container, Select } from '../components'
 import styled from '@emotion/styled'
 import { jsx } from '@emotion/core'
+import { useState } from 'react'
 
 const categoriesList = [
   { label: 'Professores do magisterio superior', value: 'Categoria_A' },
@@ -13,32 +14,35 @@ const categoriesList = [
   { label: 'Categoria e', value: 'Categoria_E' }
 ]
 
-const Categories = ({ className }) => (
-  <div className={className}>
-    <CategoryHeader
-      title='SERVIDORES DA UFPI'
-      subtitle='FONTE: Portal da Transparencia, Janeiro/2018'
-    />
-    <Container className='op__categories__container' hasDropShadow={false}>
-      <div className='op__categories__title'>
-        <Label size='medium'>ESCOLHA UMA CATEGORIA</Label>
-      </div>
-      <div>
-        <Select
-          isBlock
-          options={categoriesList}
-          onSelect={t => console.log(t)}
-          className='op__categories__select'
-          value='null'
-          placeholder='Selecione'
-        />
-      </div>
-      <Button hasDropShadow size='medium'>
-        OK
-      </Button>
-    </Container>
-  </div>
-)
+const Categories = ({ className }) => {
+  const [selected, setSelected] = useState('none')
+  return (
+    <div className={className}>
+      <CategoryHeader
+        title='SERVIDORES DA UFPI'
+        subtitle='FONTE: Portal da Transparencia, Janeiro/2018'
+      />
+      <Container className='op__categories__container' hasDropShadow={false}>
+        <div className='op__categories__title'>
+          <Label size='medium'>ESCOLHA UMA CATEGORIA</Label>
+        </div>
+        <div>
+          <Select
+            isBlock
+            options={categoriesList}
+            onSelect={t => setSelected(t)}
+            className='op__categories__select'
+            value={selected}
+            placeholder='Selecione'
+          />
+        </div>
+        <Button hasDropShadow size='medium'>
+          OK
+        </Button>
+      </Container>
+    </div>
+  )
+}
 
 const CategoriesStyled = styled(Categories)`
   .op__categories__container {
