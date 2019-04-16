@@ -12,7 +12,9 @@ type Props = {
   /** imageFooter path */
   imageFooter?: string,
   /** className */
-  className?: string
+  className?: string,
+  /** onClickItem handler */
+  onClickItem?: () => mixed
 }
 
 const style = ({ theme }) => css`
@@ -89,7 +91,13 @@ const StyledSideMenu = styled.nav`
 
 /** SideMenu component */
 const SideMenu = (props: Props) => {
-  const { children = [], className, isOpen, imageFooter = '' } = props
+  const {
+    children = [],
+    className,
+    isOpen,
+    imageFooter = '',
+    onClickItem
+  } = props
 
   return isOpen ? (
     <StyledSideMenu className={className}>
@@ -98,7 +106,11 @@ const SideMenu = (props: Props) => {
         <div className='op__sidemenu-content'>
           <ul>
             {children.map((el, key) => (
-              <li key={key} className='op__sidemenu-label'>
+              <li
+                key={key}
+                className='op__sidemenu-label'
+                onClick={onClickItem}
+              >
                 {el}
               </li>
             ))}

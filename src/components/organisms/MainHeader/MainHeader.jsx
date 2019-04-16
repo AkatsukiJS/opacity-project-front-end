@@ -56,6 +56,8 @@ const StyledMainHeader = styled.div`
 const MainHeader = (props: Props) => {
   const { logo, className, linkLogo, children } = props
   const [isOpenMenu, setOpenMenu] = useState(false)
+  const hamburguer = document.querySelector('.op__mainheader-hamburguer') || {}
+
   return (
     <StyledMainHeader className={className}>
       <Container size='small' className='op__mainheader-container'>
@@ -70,7 +72,14 @@ const MainHeader = (props: Props) => {
         />
       </Container>
       <ModalOverlay isOpen={isOpenMenu} />
-      <SideMenu isOpen={isOpenMenu} onHamburguer={() => setOpenMenu(false)}>
+      <SideMenu
+        isOpen={isOpenMenu}
+        onClickItem={() => {
+          setOpenMenu(false)
+          hamburguer.click()
+        }}
+        onHamburguer={() => setOpenMenu(false)}
+      >
         {children}
       </SideMenu>
     </StyledMainHeader>

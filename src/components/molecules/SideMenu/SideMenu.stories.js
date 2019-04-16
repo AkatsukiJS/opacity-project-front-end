@@ -39,6 +39,7 @@ storiesOf('Molecules', module)
         isOpen={open}
         onHamburguer={action('[SideMenu]: onHamburguer')}
         imageFooter={require('./footerlogo.png')}
+        onClickItem={action('[SideMenu]: onClickItem')}
       >
         {linksDefault.map((el, key) => (
           <a href={el.href} key={key}>
