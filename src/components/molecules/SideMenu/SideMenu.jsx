@@ -1,17 +1,12 @@
 /* @flow */
 /** @jsx jsx */
+import type { Node } from 'react'
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
-import { Label } from '../../index'
-
-type Link = {
-  label: string,
-  href: string
-}
 
 type Props = {
   /** List of nav links */
-  links: Link[],
+  children: Node[],
   /** isOpen flag */
   isOpen: boolean,
   /** imageFooter path */
@@ -48,14 +43,6 @@ const style = ({ theme }) => css`
 
       a {
         text-decoration: none;
-
-        .op__sidemenu-label {
-          display: block;
-
-          :hover {
-            color: ${theme.color.Crimson};
-          }
-        }
       }
 
       li {
@@ -69,6 +56,14 @@ const style = ({ theme }) => css`
           margin-bottom: 0;
         }
       }
+    }
+  }
+
+  .op__sidemenu-label * {
+    display: block;
+
+    :hover {
+      color: ${theme.color.Crimson};
     }
   }
 
@@ -94,7 +89,7 @@ const StyledSideMenu = styled.nav`
 
 /** SideMenu component */
 const SideMenu = (props: Props) => {
-  const { links = [], className, isOpen, imageFooter = '' } = props
+  const { children = [], className, isOpen, imageFooter = '' } = props
 
   return isOpen ? (
     <StyledSideMenu className={className}>
@@ -102,13 +97,9 @@ const SideMenu = (props: Props) => {
       <div className='op__sidemenu-wrapper'>
         <div className='op__sidemenu-content'>
           <ul>
-            {links.map(({ label, href }, key) => (
-              <li key={key}>
-                <a href={href}>
-                  <Label className='op__sidemenu-label' size='large'>
-                    {label}
-                  </Label>
-                </a>
+            {children.map((el, key) => (
+              <li key={key} className='op__sidemenu-label'>
+                {el}
               </li>
             ))}
           </ul>
