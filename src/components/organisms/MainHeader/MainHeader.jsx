@@ -1,5 +1,6 @@
 /* @flow */
 /** @jsx jsx */
+import type { Node } from 'react'
 import styled from '@emotion/styled'
 import { useState } from 'react'
 import { css, jsx } from '@emotion/core'
@@ -10,20 +11,15 @@ import {
   SideMenu
 } from '../../../components'
 
-type Link = {
-  href: string,
-  label: string
-}
-
 type Props = {
-  /** Link list */
-  links: Link[],
   /** Logo path */
   logo: string,
   /** Link logo */
   linkLogo: string,
   /** className */
-  className?: string
+  className?: string,
+  /** List of nav links */
+  children: Node[]
 }
 
 const style = ({ theme }) => css`
@@ -58,8 +54,10 @@ const StyledMainHeader = styled.div`
 
 /** MainHeader component */
 const MainHeader = (props: Props) => {
-  const { logo, className, linkLogo, links } = props
+  const { logo, className, linkLogo, children } = props
   const [isOpenMenu, setOpenMenu] = useState(false)
+  const hamburguer = document.querySelector('.op__mainheader-hamburguer') || {}
+
   return (
     <StyledMainHeader className={className}>
       <Container size='small' className='op__mainheader-container'>
@@ -75,10 +73,15 @@ const MainHeader = (props: Props) => {
       </Container>
       <ModalOverlay isOpen={isOpenMenu} />
       <SideMenu
-        links={links}
         isOpen={isOpenMenu}
+        onClickItem={() => {
+          setOpenMenu(false)
+          hamburguer.click()
+        }}
         onHamburguer={() => setOpenMenu(false)}
-      />
+      >
+        {children}
+      </SideMenu>
     </StyledMainHeader>
   )
 }

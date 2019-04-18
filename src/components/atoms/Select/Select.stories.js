@@ -29,6 +29,7 @@ const placeholderDefault = 'Choose a option'
 const values = [null, ...optionsDefault.map(({ value }) => value)]
 
 storiesOf('Atoms', module).add('Select', () => {
+  const isBlock = select('isBlock', [false, true], false, group)
   const size = select('Size', sizeOptions, sizeDefault, group)
   const options = object('Options', optionsDefault, group)
   const placeholder = text('Placeholder', placeholderDefault, group)
@@ -36,6 +37,7 @@ storiesOf('Atoms', module).add('Select', () => {
 
   return (
     <Select
+      isBlock={isBlock}
       options={options}
       placeholder={placeholder}
       onSelect={action(`onSelect: `)}

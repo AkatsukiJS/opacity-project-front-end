@@ -20,6 +20,7 @@ const style = ({ theme }) => css`
   top: 0;
   left: 0;
   background-color: ${theme.color.Modal};
+  z-index: 10;
 `
 
 const StyledModalOverlay = styled.div`

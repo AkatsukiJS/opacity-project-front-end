@@ -36,11 +36,11 @@
     "@babel/preset-react": "^7.0.0",
     "@commitlint/cli": "^7.5.0",
     "@commitlint/config-conventional": "^7.5.0",
-    "@storybook/addon-actions": "5.0.0-beta.2",
-    "@storybook/addon-info": "5.0.0-beta.2",
-    "@storybook/addon-knobs": "5.0.0-beta.2",
-    "@storybook/addon-options": "5.0.0-beta.2",
-    "@storybook/react": "5.0.0-beta.2",
+    "@storybook/addon-actions": "^5.0.7",
+    "@storybook/addon-info": "^5.0.7",
+    "@storybook/addon-knobs": "^5.0.7",
+    "@storybook/addon-options": "^5.0.7",
+    "@storybook/react": "^5.0.7",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-emotion": "^10.0.6",
@@ -68,6 +68,7 @@
     "@emotion/styled": "^10.0.6",
     "emotion-theming": "^10.0.7",
     "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "react-dom": "^16.8.1",
+    "react-router-dom": "^5.0.0"
   }
 }
