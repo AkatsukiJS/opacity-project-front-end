@@ -12,8 +12,6 @@ type Props = {
   kind?: Kind,
   /** Size of label */
   size?: Size,
-  /** Line in label */
-  hasLine?: boolean,
   /** Text of label */
   children?: string
 }
@@ -28,10 +26,8 @@ const style = ({ theme, size, kind, hasLine }) => css`
   font-family: ${theme.fontFamily.Ropa};
   font-size: ${theme.fontSize[capitalize(size)]};
   color: ${theme.color[kindColor[kind]]};
-  padding-bottom: 5px;
-  border-bottom: ${hasLine
-    ? `1px solid ${theme.color[kindColor[kind]]}`
-    : 'none'};
+  font-weight: normal;
+  border-bottom: none;
 `
 
 const StyledLabel = styled.span`
@@ -43,8 +39,7 @@ const Label = (props: Props) => <StyledLabel {...props} />
 Label.defaultProps = {
   kind: 'basic',
   size: 'medium',
-  children: 'label',
-  hasLine: false
+  children: 'label'
 }
 
 export default Label
