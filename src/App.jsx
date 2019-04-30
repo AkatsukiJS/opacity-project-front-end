@@ -4,7 +4,7 @@
 import styled from '@emotion/styled'
 import { jsx } from '@emotion/core'
 import { MainHeader, Label } from './components'
-import { Categories } from './pages'
+import { Categories, Category } from './pages'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 type Props = {
@@ -38,6 +38,7 @@ const PageRouter = () => {
     <Switch>
       <Route path='/' exact component={Home} />
       <Route path='/categories' component={Categories} />
+      <Route path='/category' component={Category} />
     </Switch>
   )
 }
