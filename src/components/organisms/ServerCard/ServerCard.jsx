@@ -71,6 +71,7 @@ const ServerCard = (props: Props) => {
         <div>
           {info.map((el, i) => (
             <Expander
+              key={i}
               title={el.title.toUpperCase()}
               isExpanded={expanders[i]}
               onExpand={() =>
@@ -80,13 +81,15 @@ const ServerCard = (props: Props) => {
             >
               <div className='op__servercard-infolist'>
                 <div className='op__servercard-info'>
-                  {el.payload.map(data => (
-                    <Label kind='primary'>{data.key}</Label>
+                  {el.payload.map((data, i) => (
+                    <Label key={i} kind='primary'>
+                      {data.key}
+                    </Label>
                   ))}
                 </div>
                 <div className='op__servercard-info'>
-                  {el.payload.map(data => (
-                    <Label>{data.value}</Label>
+                  {el.payload.map((data, i) => (
+                    <Label key={i}>{data.value}</Label>
                   ))}
                 </div>
               </div>

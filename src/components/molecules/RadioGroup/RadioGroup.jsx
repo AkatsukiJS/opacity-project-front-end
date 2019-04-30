@@ -86,7 +86,7 @@ const RadioGroup = (props: Props) => {
       {options.map((label, key) => {
         const isActived = selected === label
         return (
-          <div className='op__radio-group-item'>
+          <div className='op__radio-group-item' key={key}>
             <Radio onSelect={() => onSelect(label)} isSelected={isActived}>
               {isKindLabeled ? label : ''}
             </Radio>
