@@ -30,10 +30,11 @@ const style = ({ theme }) => css`
     z-index: 10;
     display: flex;
     justify-content: space-between;
+    justify-items: center;
     text-transform: uppercase;
     text-align: center;
     box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.1);
-
+    padding: 0.75rem 1rem;
     .op-dialog-box__titlebar_label {
       flex: 1;
     }
@@ -42,6 +43,14 @@ const style = ({ theme }) => css`
   .op-dialog-box__buttonsset {
     display: flex;
     justify-content: flex-end;
+  }
+
+  .op-dialog-box__confirm {
+    margin: 0 0 0 10px;
+  }
+
+  .op-dialog-box__close:hover {
+    cursor: pointer;
   }
 `
 const StyledDialogBox = styled.div`
@@ -70,24 +79,36 @@ const DialogBox = (props: Props) => {
         hasDropShadow={false}
       >
         <Label className='op-dialog-box__titlebar_label'>{title}</Label>
-        <Icon kind='close' size='small' onClick={onClose} />
+        <Icon
+          className='op-dialog-box__close'
+          kind='close'
+          size='small'
+          onClick={onClose}
+        />
       </Container>
 
       <Container hasDropShadow={false} size='small'>
         {children}
       </Container>
       <Container
+        coner={[0, 0, 10, 10]}
         hasDropShadow={false}
         size='small'
         className='op-dialog-box__buttonsset'
       >
         {isValid(cancelText) && (
-          <Button size='medium' onClick={onCancel}>
+          <Button hasDropShadow size='medium' onClick={onCancel}>
             {cancelText}
           </Button>
         )}
         {isValid(confirmText) && (
-          <Button size='medium' onClick={onConfirm} kind='secondary'>
+          <Button
+            size='medium'
+            hasDropShadow
+            onClick={onConfirm}
+            kind='secondary'
+            className='op-dialog-box__confirm'
+          >
             {confirmText}
           </Button>
         )}
