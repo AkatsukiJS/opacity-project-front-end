@@ -23,9 +23,11 @@ const toCategoriesList = list => {
   }))
 }
 
+// @flow
 const SelectCategory = ({ onSelect, selected, setSelected }) => {
-  const { data, error, loading } = useApi(api.getCategories)
+  const { data, error, loading } = useApi(api.getCategories, [])
 
+  console.log(data, error, loading)
   if (error) return <Label kind='primary'>{'Algum erro ocorreu! :('}</Label>
   if (loading) return <Loader label='Carregando' />
 
@@ -40,16 +42,17 @@ const SelectCategory = ({ onSelect, selected, setSelected }) => {
         <Select
           isBlock
           options={list}
-          onSelect={t => setSelected(t)}
+          onSelect={(n, k) => setSelected({ name: n, key: k })}
           className='op__categories__select'
-          value={selected}
+          value={selected.name}
           placeholder='Selecione'
         />
       </div>
       <Button
         hasDropShadow
         size='medium'
-        onClick={() => selected !== 'none' && onSelect(selected)}
+        // onSelect({label, key, count})
+        onClick={() => selected.name !== 'none' && onSelect(list[selected.key])}
       >
         OK
       </Button>
@@ -58,7 +61,8 @@ const SelectCategory = ({ onSelect, selected, setSelected }) => {
 }
 
 const Categories = ({ className, history }) => {
-  const [selected, setSelected] = useState('none')
+  const [selected, setSelected] = useState({ name: 'none', key: -1 })
+  console.log(selected)
 
   return (
     <div className={className}>
