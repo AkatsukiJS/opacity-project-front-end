@@ -9,6 +9,7 @@ const globalStyle = css`
   body {
     padding: 0;
     margin: 0;
+    background-color: ${theme.color.LightestGray};
   }
 `
 

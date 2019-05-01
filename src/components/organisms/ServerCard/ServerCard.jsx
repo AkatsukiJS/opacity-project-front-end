@@ -71,7 +71,8 @@ const ServerCard = (props: Props) => {
         <div>
           {info.map((el, i) => (
             <Expander
-              title={el.title.toUpperCase()}
+              key={i}
+              title={el.title}
               isExpanded={expanders[i]}
               onExpand={() =>
                 setExpander(expanders.map((el, k) => (k === i ? !el : el)))
@@ -80,13 +81,15 @@ const ServerCard = (props: Props) => {
             >
               <div className='op__servercard-infolist'>
                 <div className='op__servercard-info'>
-                  {el.payload.map(data => (
-                    <Label kind='primary'>{data.key}</Label>
+                  {el.payload.map((data, i) => (
+                    <Label key={i} kind='primary'>
+                      {data.key}
+                    </Label>
                   ))}
                 </div>
                 <div className='op__servercard-info'>
-                  {el.payload.map(data => (
-                    <Label>{data.value}</Label>
+                  {el.payload.map((data, i) => (
+                    <Label key={i}>{data.value}</Label>
                   ))}
                 </div>
               </div>
@@ -95,7 +98,9 @@ const ServerCard = (props: Props) => {
         </div>
         <div>
           <a href={link} target='_blank'>
-            <Label kind='grizzly'>{link}</Label>
+            <Label size='small' kind='grizzly'>
+              {link}
+            </Label>
           </a>
         </div>
       </Container>

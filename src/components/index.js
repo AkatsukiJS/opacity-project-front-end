@@ -29,3 +29,6 @@ export { default as TabBar } from './molecules/TabBar/TabBar.jsx'
 // Organisms
 export { default as MainHeader } from './organisms/MainHeader/MainHeader.jsx'
 export { default as ServerCard } from './organisms/ServerCard/ServerCard.jsx'
+export {
+  default as DialogBoxModal
+} from './organisms/DialogBoxModal/DialogBoxModal.jsx'
