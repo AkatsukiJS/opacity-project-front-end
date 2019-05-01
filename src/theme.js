@@ -22,7 +22,8 @@ export default {
   fontSize: {
     Small: '0.85rem',
     Medium: '1rem',
-    Large: '1.25rem'
+    Large: '1.25rem',
+    XLarge: '1.5rem'
   },
   iconSize: {
     Small: '1rem',
