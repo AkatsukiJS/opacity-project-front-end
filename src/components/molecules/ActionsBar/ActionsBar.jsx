@@ -76,7 +76,7 @@ const ActionsBar = (props: Props) => {
       <Container size='small'>
         <ul>
           {actions.map(({ name, onClick }, key) => (
-            <li onClick={onClick}>
+            <li onClick={onClick} key={key}>
               <Label kind='primary'>{name}</Label>
             </li>
           ))}
