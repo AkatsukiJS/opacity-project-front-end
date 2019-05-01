@@ -29,6 +29,11 @@ type Props = {
 const style = ({ theme }) => css`
   padding: 0;
   margin: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  widht: 100%;
+  height: 100vh;
   .op__dialogmodal__container {
     position: fixed;
     display: flex;
