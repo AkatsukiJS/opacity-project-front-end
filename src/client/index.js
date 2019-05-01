@@ -46,7 +46,7 @@ const getInfo = () => {
   return izifetch(info)
 }
 
-export const useApi = request => {
+export const useApi = (request, effectList = []) => {
   const [data, setData] = useState()
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -60,7 +60,7 @@ export const useApi = request => {
     }
 
     fetchData()
-  }, [])
+  }, effectList)
 
   return {
     error,
