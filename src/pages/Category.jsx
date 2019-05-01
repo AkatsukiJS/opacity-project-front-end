@@ -108,7 +108,7 @@ const Category = ({ className }) => {
             className='op__category__servercard'
             name={el.cadastro['NOME']}
             info={transformServerData(el)}
-            link={`${baseLink}/${el.id}`}
+            link={`${baseLink}${el.id}`}
             isBlock
           />
         ))}
@@ -133,7 +133,7 @@ const Category = ({ className }) => {
         })}
       </div>
       <DialogBoxModal
-        title='Ordenar'
+        title='Ordenar por'
         isOpen={isOpenModal}
         onClose={() => setOpenModal(false)}
       >
