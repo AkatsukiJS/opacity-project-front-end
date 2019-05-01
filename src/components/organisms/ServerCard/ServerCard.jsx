@@ -72,7 +72,7 @@ const ServerCard = (props: Props) => {
           {info.map((el, i) => (
             <Expander
               key={i}
-              title={el.title.toUpperCase()}
+              title={el.title}
               isExpanded={expanders[i]}
               onExpand={() =>
                 setExpander(expanders.map((el, k) => (k === i ? !el : el)))
@@ -98,7 +98,9 @@ const ServerCard = (props: Props) => {
         </div>
         <div>
           <a href={link} target='_blank'>
-            <Label kind='grizzly'>{link}</Label>
+            <Label size='small' kind='grizzly'>
+              {link}
+            </Label>
           </a>
         </div>
       </Container>
