@@ -4,7 +4,7 @@
 import styled from '@emotion/styled'
 import { jsx } from '@emotion/core'
 import { MainHeader, Label } from './components'
-import { Categories, Category, About } from './pages'
+import { Categories, Category, About, Home, NotFound } from './pages'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 type Props = {
@@ -26,26 +26,9 @@ const linksList = [
   }
 ]
 
-const Home = () => (
-  <div>
-    <Label> Hello Friend </Label>
-  </div>
-)
-
 const PageRouter = () => {
   return (
-    <Switch>
-      <Route path='/' exact component={Home} />
-      <Route path='/categories' component={Categories} />
-      <Route path='/category' component={Category} />
-      <Route path='/about' component={About} />
-    </Switch>
-  )
-}
-
-const App = ({ className }: Props) => (
-  <div className={className}>
-    <Router>
+    <div>
       <MainHeader
         logo={require('../assets/logo.png')}
         linkLogo='#'
@@ -63,7 +46,23 @@ const App = ({ className }: Props) => (
           )
         )}
       </MainHeader>
-      <PageRouter />
+      <Switch>
+        <Route path='/categories' component={Categories} />
+        <Route path='/category' component={Category} />
+        <Route path='/about' component={About} />
+      </Switch>
+    </div>
+  )
+}
+
+const App = ({ className }: Props) => (
+  <div className={className}>
+    <Router>
+      <Switch>
+        <Route path='/' exact component={Home} />
+        <Route path='/(about|categories|category)' component={PageRouter} />
+        <Route component={NotFound} />
+      </Switch>
     </Router>
   </div>
 )

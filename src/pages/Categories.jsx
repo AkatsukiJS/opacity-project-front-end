@@ -14,6 +14,7 @@ import { jsx } from '@emotion/core'
 import { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { useApi, api } from '../client'
+import { ErrorLabel } from './common'
 
 const toCategoriesList = list => {
   return list.map(el => ({
@@ -27,8 +28,13 @@ const toCategoriesList = list => {
 const SelectCategory = ({ onSelect, selected, setSelected }) => {
   const { data, error, loading } = useApi(api.getCategories, [])
 
-  console.log(data, error, loading)
-  if (error) return <Label kind='primary'>{'Algum erro ocorreu! :('}</Label>
+  // console.log(data, error, loading)
+  if (error) {
+    return (
+      <ErrorLabel label='Um erro inesperado ocorreu! Tente novamente mais tarde.' />
+    )
+  }
+
   if (loading) return <Loader label='Carregando' />
 
   const list = toCategoriesList(data)
@@ -62,7 +68,7 @@ const SelectCategory = ({ onSelect, selected, setSelected }) => {
 
 const Categories = ({ className, history }) => {
   const [selected, setSelected] = useState({ name: 'none', key: -1 })
-  console.log(selected)
+  // console.log(selected)
 
   return (
     <div className={className}>

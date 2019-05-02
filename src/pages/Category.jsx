@@ -8,18 +8,19 @@ import {
   DialogBoxModal,
   Button,
   RadioGroup,
-  Label
+  Label,
+  Loader
 } from '../components'
 import styled from '@emotion/styled'
 import { jsx } from '@emotion/core'
 import { useState } from 'react'
-import data from '../temp_data.json'
+import { withRouter, Redirect } from 'react-router-dom'
+import { api, useApi } from '../client'
+import { ErrorLabel } from './common'
 
-const serverList = data.results.reduce(
-  (acc, cur) => [...acc, ...Array(40).fill(cur)],
-  []
-)
 const baseLink = 'https://portaldatransparencia.gov.br/servidores/'
+
+const formatReal = n => `R$ ${n}`.replace('.', ',')
 
 const transformServerData = raw => {
   return [
@@ -27,12 +28,12 @@ const transformServerData = raw => {
       title: 'Dados',
       payload: [
         {
-          key: 'Função',
-          value: raw.cadastro['FUNCAO']
+          key: 'Jornada de trabalho',
+          value: raw.cadastro['JORNADA_DE_TRABALHO']
         },
         {
-          key: 'Atividade',
-          value: raw.cadastro['ATIVIDADE']
+          key: 'Unidade Organizacional',
+          value: raw.cadastro['UORG_EXERCICIO']
         }
       ]
     },
@@ -40,20 +41,33 @@ const transformServerData = raw => {
       title: 'Remuneração',
       payload: [
         {
-          key: 'Salário Liquido',
-          value: raw.remuneracao['REMUNERAÇÃO APÓS DEDUÇÕES OBRIGATÓRIAS (R$)']
+          key: 'Salário Bruto',
+          value: formatReal(raw.remuneracao['REMUNERAÇÃO BÁSICA BRUTA (R$)'])
         },
         {
-          key: 'Salário Bruto',
-          value: raw.remuneracao['REMUNERAÇÃO BÁSICA BRUTA (R$)']
+          key: 'Gratificação Natalina',
+          value: formatReal(raw.remuneracao['GRATIFICAÇÃO NATALINA (R$)'])
+        },
+        {
+          key: 'Férias',
+          value: formatReal(raw.remuneracao['FÉRIAS (R$)'])
+        },
+        {
+          key: 'IRRF',
+          value: formatReal(raw.remuneracao['IRRF (R$)'])
+        },
+        {
+          key: 'Salário Liquido',
+          value: formatReal(
+            raw.remuneracao['REMUNERAÇÃO APÓS DEDUÇÕES OBRIGATÓRIAS (R$)']
+          )
         }
       ]
     }
   ]
 }
 
-const pageSize = 5
-const totalItems = serverList.length
+const pageSize = 10
 
 const makePaginationArray = (sizeList, currentPage) => {
   const size = Math.trunc(sizeList / pageSize) + (sizeList % pageSize !== 0)
@@ -65,27 +79,112 @@ const makePaginationArray = (sizeList, currentPage) => {
     const curl = currentPage === 1 || currentPage === size ? [] : [currentPage]
     return [1, ...prvl, ...curl, ...nxtl, size]
   } else {
-    return [1, 2, 3, 4]
+    return Array(size)
+      .fill(0)
+      .map((_, i) => i + 1)
   }
 }
 
-const getPage = (list, pageNumber, pageSize) => {
-  const offset = pageSize * pageNumber
-  const end = offset + pageSize
-  return list.slice(offset, end)
+const ServersList = ({
+  error,
+  loading,
+  data,
+  page,
+  totalItems,
+  setCurrentPage
+}) => {
+  if (error) {
+    return (
+      <ErrorLabel label='Um erro inesperado ocorreu! Tente novamente mais tarde.' />
+    )
+  }
+  if (loading) return <Loader label='Carregando' />
+
+  const list = data.results || []
+  const currentPage = page + 1
+
+  return (
+    <div>
+      <div className='op__category__container'>
+        {list.map((el, i) => (
+          <ServerCard
+            key={i}
+            className='op__category__servercard'
+            name={el.cadastro['NOME']}
+            info={transformServerData(el)}
+            link={`${baseLink}${el.id}`}
+            isBlock
+          />
+        ))}
+      </div>
+      <div className='op__category__pagination'>
+        {makePaginationArray(totalItems, currentPage).map((el, key) => {
+          const [child, canHandler] = isNaN(el)
+            ? ['...', false]
+            : [`${el}`, true]
+          const kind = el === currentPage ? 'primary' : 'basic'
+          return (
+            <div
+              className='op__category__pagenumber'
+              key={key}
+              onClick={() => canHandler && setCurrentPage(el - 1)}
+            >
+              <Label size='large' kind={kind}>
+                {child}
+              </Label>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
 }
 
-const Category = ({ className }) => {
+const orderMapping = {
+  Crescente: 'ASC',
+  Decrescente: 'DESC'
+}
+
+const sortMapping = {
+  Name: 'NAME',
+  'Salário Líquido': 'R_LIQUID',
+  'Salário Bruto': 'R_BRUTE'
+}
+
+const Category = ({ className, history }) => {
+  const state = history.location.state
+
+  if (!(state && state['category'])) {
+    return <Redirect to='/categories' />
+  }
+
   const [isOpenModal, setOpenModal] = useState(false)
+  const [refetchToggle, setRefetchToggle] = useState(false)
   const [selectedSort, setSelectedSort] = useState('Name')
   const [selectedOrder, setSelectedOrder] = useState('Crescente')
   const [currentPage, setCurrentPage] = useState(0)
-  const page = currentPage + 1
-  const list = getPage(serverList, currentPage, pageSize)
+  // const page = currentPage + 1
+  // const list = getPage(serverList, currentPage, pageSize)
+
+  const category = state['category']
+  const categoryLabel = category.label
+  const categoryKey = category.value
+  const totalItems = category.count
+
+  const { data, error, loading } = useApi(() => {
+    return api.getCategory({
+      category: categoryKey,
+      offset: 10 * currentPage,
+      limit: 10,
+      sortBy: sortMapping[selectedSort],
+      orderBy: orderMapping[selectedOrder]
+    })
+  }, [refetchToggle, currentPage])
+
   return (
     <div className={className}>
       <CategoryHeader
-        title={data.category}
+        title={categoryLabel + ' (UFPI)'}
         subtitle='FONTE: Portal da Transparencia, Janeiro/2018'
       />
       <div>
@@ -101,37 +200,14 @@ const Category = ({ className }) => {
           justifyContent='flex-end'
         />
       </div>
-      <div className='op__category__container'>
-        {list.map((el, i) => (
-          <ServerCard
-            key={i}
-            className='op__category__servercard'
-            name={el.cadastro['NOME']}
-            info={transformServerData(el)}
-            link={`${baseLink}${el.id}`}
-            isBlock
-          />
-        ))}
-      </div>
-      <div className='op__category__pagination'>
-        {makePaginationArray(totalItems, page).map((el, key) => {
-          const [child, canHandler] = isNaN(el)
-            ? ['...', false]
-            : [`${el}`, true]
-          const kind = el === page ? 'primary' : 'basic'
-          return (
-            <div
-              className='op__category__pagenumber'
-              key={key}
-              onClick={() => canHandler && setCurrentPage(el - 1)}
-            >
-              <Label size='large' kind={kind}>
-                {child}
-              </Label>
-            </div>
-          )
-        })}
-      </div>
+      <ServersList
+        data={data}
+        loading={loading}
+        error={error}
+        page={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalItems={totalItems}
+      />
       <DialogBoxModal
         title='Ordenar por'
         isOpen={isOpenModal}
@@ -142,7 +218,7 @@ const Category = ({ className }) => {
             <div>
               <RadioGroup
                 selected={selectedSort}
-                options={['Name', 'Salário Líquido', 'Salário Bruto']}
+                options={Object.keys(sortMapping)}
                 direction='column'
                 onSelect={setSelectedSort}
               />
@@ -150,7 +226,7 @@ const Category = ({ className }) => {
             <div>
               <RadioGroup
                 selected={selectedOrder}
-                options={['Crescente', 'Decrescente']}
+                options={Object.keys(orderMapping)}
                 direction='column'
                 onSelect={setSelectedOrder}
                 isKindLabeled
@@ -158,7 +234,16 @@ const Category = ({ className }) => {
             </div>
           </div>
           <div className='op__dialogmodal__button'>
-            <Button hasDropShadow>Ordenar</Button>
+            <Button
+              hasDropShadow
+              onClick={() => {
+                setCurrentPage(0)
+                setRefetchToggle(!refetchToggle)
+                setOpenModal(false)
+              }}
+            >
+              Ordenar
+            </Button>
           </div>
         </div>
       </DialogBoxModal>
@@ -194,4 +279,4 @@ const CategoryStyled = styled(Category)`
   }
 `
 
-export default CategoryStyled
+export default withRouter(CategoryStyled)
