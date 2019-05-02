@@ -14,11 +14,12 @@ const About = ({ className }) => {
       <Container className='op__about__container' hasDropShadow={false}>
         <div>
           <Label size='large'>
-            Front-end para a API de dados dos servidores públicos do "Portal da
-            Transparência". A API é um exemplo de Web-Service que foi feita a
-            extração e filtro de alguns dados das planilhas disponíveis no
-            "Portal da Transparência". Para fins didáticos e simplicidade, foram
-            filtrados apenas os servidores da UFPI (Poderia ser outra IEF).
+            O projeto é um front-end para a API de dados dos servidores públicos
+            do "Portal da Transparência". A API é um exemplo de Web-Service que
+            foi feita a extração e filtro de alguns dados das planilhas
+            disponíveis no "Portal da Transparência". Para fins didáticos e
+            simplicidade, foram filtrados apenas os servidores da UFPI (Poderia
+            ser outra IEF).
           </Label>
           <p>
             <Label size='large'>
@@ -77,6 +78,9 @@ const AboutStyled = styled(About)`
   .op__about__container {
     margin: 0;
     text-align: justify;
+    a {
+      color: ${({ theme }) => theme.color.Crimson};
+    }
   }
   .op__about__logocontainer {
     text-align: center;
