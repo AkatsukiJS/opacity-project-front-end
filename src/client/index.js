@@ -17,6 +17,9 @@ const get = (endpoint, options) => {
 const izifetch = async request => {
   try {
     const response = await request
+    // To improve this message
+    // rate-limit can occur
+    if (!response.ok) throw new Error('Falha na requisição')
     return [null, await response.json()]
   } catch (e) {
     return [e.message, null]
