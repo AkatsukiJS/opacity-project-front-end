@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 import qs from 'querystring'
 import { useState, useEffect } from 'react'
 
-const base = 'http://localhost:3001'
+const base = process.env.API_BASE || 'http://localhost:3001'
 
 const get = (endpoint, options) => {
   const params = qs.stringify(options)
