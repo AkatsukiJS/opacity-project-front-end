@@ -24,11 +24,9 @@ const toCategoriesList = list => {
   }))
 }
 
-// @flow
 const SelectCategory = ({ onSelect, selected, setSelected }) => {
   const { data, error, loading } = useApi(api.getCategories, [])
 
-  // console.log(data, error, loading)
   if (error) {
     return (
       <ErrorLabel label='Um erro inesperado ocorreu! Tente novamente mais tarde.' />
@@ -68,7 +66,6 @@ const SelectCategory = ({ onSelect, selected, setSelected }) => {
 
 const Categories = ({ className, history }) => {
   const [selected, setSelected] = useState({ name: 'none', key: -1 })
-  // console.log(selected)
 
   return (
     <div className={className}>
