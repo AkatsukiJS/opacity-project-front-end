@@ -9,7 +9,7 @@
 
 </div>
 
-A internal front-end project to Opacity-Project by **Akatsuki JS**
+An internal front-end project for Opacity-Project by **Akatsuki JS**
 
 For members learn a few about:
 - best practices
@@ -40,7 +40,7 @@ It used:
 
 ##  :book: Development scripts
 
-It required the environment variable `API_BASE`, please set it before to run the project :wink:
+It required the environment variable `API_BASE`, please set it before running the project :wink:
 
 #### `yarn install`
 
@@ -62,7 +62,7 @@ It required the environment variable `API_BASE`, please set it before to run the
 
 #### `yarn lint:fix`
 
-> Check and fix code conforms to linting rules (standard)
+> Check and fix code in accordance with linting rules (standard)
 
 #### `yarn prettier`
 
