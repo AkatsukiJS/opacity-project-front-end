@@ -19,7 +19,7 @@ type Props = {
   /** List of options */
   options?: Option[],
   /** onSelect handler  */
-  onSelect: (value: string) => mixed,
+  onSelect: (value: string, key?: number) => mixed,
   /** Placeholder */
   placeholder?: string,
   /** Value of select */
@@ -132,7 +132,7 @@ const Select = (props: Props) => {
   const current = options.find(el => el.value === value)
   const selected = current ? current.label : placeholder
 
-  const onSelectItem = valueItem => onSelect && onSelect(valueItem)
+  const onSelectItem = (valueItem, key) => onSelect && onSelect(valueItem, key)
 
   return (
     <StyledSelect
@@ -152,7 +152,7 @@ const Select = (props: Props) => {
         <div className='op__select-options'>
           <ul>
             {options.map(({ value, label }, key) => (
-              <li key={key} onClick={() => onSelectItem(value)}>
+              <li key={key} onClick={() => onSelectItem(value, key)}>
                 {label}
               </li>
             ))}

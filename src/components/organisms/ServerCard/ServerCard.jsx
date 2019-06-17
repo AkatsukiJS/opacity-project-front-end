@@ -44,6 +44,9 @@ const style = ({ theme }) => css`
     flex-direction: column;
     box-sizing: border-box;
     padding: 0 1rem 0 0;
+    span {
+      margin: 0.2rem 0;
+    }
   }
   .op__servercard-title {
     padding: 0 0 0 0.5rem;
