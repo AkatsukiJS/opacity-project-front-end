@@ -1,6 +1,7 @@
 const path = require('path')
 const HTMLPlugin = require('html-webpack-plugin')
 const FlowWebpackPlugin = require('flow-webpack-plugin')
+const webpack = require('webpack')
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -34,6 +35,11 @@ module.exports = {
             cacheDirectory: true
           }
         }
+      },
+      {
+        test: /\.(png|svg|woff|ttf|eot)$/,
+        exclude: /node_modules/,
+        use: 'file-loader'
       }
     ]
   },
@@ -44,6 +50,9 @@ module.exports = {
       hash: true,
       cache: true
     }),
-    new FlowWebpackPlugin()
+    new FlowWebpackPlugin(),
+    new webpack.EnvironmentPlugin({
+      API_BASE: process.env.API_BASE
+    })
   ]
 }

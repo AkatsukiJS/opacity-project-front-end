@@ -2,11 +2,14 @@
 
 <div align="center">
 
-[![Storybook](https://github.com/storybooks/press/blob/master/badges/storybook.svg)](https://opacity-storybook.surge.sh) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://opacity-storybook.surge.sh)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 </div>
 
-A internal front-end project to Opacity-Project by **Akatsuki JS**
+An internal front-end project for Opacity-Project by **Akatsuki JS**
 
 For members learn a few about:
 - best practices
@@ -15,11 +18,14 @@ For members learn a few about:
 - css in js
 - build UI components in isolation
 
+See the **API** and the **detailed information** about **Opacity-Project** [here](https://github.com/AkatsukiJS/opacity-project-api)
+
+The site is live in [opacity-project](https://opacity-project.netlify.com/)
 
 
-### :construction: STATUS: work in progress
+### :label: STATUS: poor first release
 
-Libs utilized:
+It used:
 
 - Flavor: flow
 - Lib: React
@@ -30,9 +36,11 @@ Libs utilized:
 - Styles: Emotion JS
 
 
-> See the initial [Storybook](https://opacity-storybook.surge.sh)
+> See the [Storybook](https://opacity-storybook.surge.sh)
 
 ##  :book: Development scripts
+
+It required the environment variable `API_BASE`, please set it before running the project :wink:
 
 #### `yarn install`
 
@@ -41,6 +49,8 @@ Libs utilized:
 #### `yarn dev`
 
 > Run in development mode
+
+> eg: API_BASE=http://localhost:3000 yarn dev
 
 #### `yarn prod`
 
@@ -52,7 +62,7 @@ Libs utilized:
 
 #### `yarn lint:fix`
 
-> Check and fix code conforms to linting rules (standard)
+> Check and fix code in accordance with linting rules (standard)
 
 #### `yarn prettier`
 
@@ -71,10 +81,11 @@ Libs utilized:
 
 [Read more here](/CONTRIBUTING.md)
 
+New issues for features, enhancements, bugs or suggestions are welcome!
+
 ## License
 
 The source code is licensed under **MIT**. License is available [here](https://github.com/AkatsukiJS/opacity-project-front-end/blob/master/LICENSE)
-
 
 <br>
 

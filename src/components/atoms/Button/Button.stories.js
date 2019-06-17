@@ -4,19 +4,35 @@ import { storiesOf } from '@storybook/react'
 import { text, select } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
-const options = ['primary', 'secondary']
-const defaultValue = 'primary'
 const group = 'GROUP-BUTTON'
 
-storiesOf('Button', module)
-  .add('Primary', () => {
-    const type = select('Type', options, defaultValue, group)
-    const label = text('Label', 'button', group)
+const kindOptions = ['primary', 'secondary', 'invisible']
+const kindDefault = 'primary'
 
-    return (
-      <Button type={type} onClick={action('Button clicked!')}>
-        {label}
-      </Button>
-    )
-  })
-  .add('Secondary', () => <Button type='secondary'> Secondary </Button>)
+const sizeOptions = ['small', 'medium', 'large']
+const sizeDefault = 'medium'
+
+const dropShadowOptions = [false, true]
+const dropShadowDefault = false
+
+storiesOf('Atoms', module).add('Button', () => {
+  const kind = select('Kind', kindOptions, kindDefault, group)
+  const label = text('Label', 'button', group)
+  const size = select('Size', sizeOptions, sizeDefault, group)
+  const hasDropShadow = select(
+    'hasDropShadow',
+    dropShadowOptions,
+    dropShadowDefault,
+    group
+  )
+  return (
+    <Button
+      kind={kind}
+      size={size}
+      hasDropShadow={hasDropShadow}
+      onClick={action('Button clicked!')}
+    >
+      {label}
+    </Button>
+  )
+})

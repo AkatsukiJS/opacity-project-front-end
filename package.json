@@ -10,14 +10,15 @@
     "dev": "webpack-dev-server --hot --progress --open --config webpack.dev.js",
     "prod": "NODE_ENV='production' webpack --progress --config webpack.prod.js",
     "flow": "flow",
-    "lint:fix": "standard --fix --parser babel-eslint --plugin flowtype 'src/**/*.{jsx,js}'",
-    "prettier": "prettier-standard 'src/**/*.{jsx,js}' && yarn lint:fix",
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "lint:fix": "standard --fix --parser babel-eslint --plugin flowtype \"src/**/*.{jsx,js}\"",
+    "prettier": "prettier-standard \"src/**/*.{jsx,js}\" && yarn lint:fix",
+    "storybook": "start-storybook -s ./assets -p 9001 -c .storybook",
     "build-storybook": "build-storybook -c .storybook"
   },
   "lint-staged": {
     "*.{jsx,js}": [
-      "yarn prettier",
+      "prettier-standard",
+      "standard --fix --parser babel-eslint --plugin flowtype",
       "git add"
     ]
   },
@@ -35,11 +36,11 @@
     "@babel/preset-react": "^7.0.0",
     "@commitlint/cli": "^7.5.0",
     "@commitlint/config-conventional": "^7.5.0",
-    "@storybook/addon-actions": "5.0.0-beta.2",
-    "@storybook/addon-info": "5.0.0-beta.2",
-    "@storybook/addon-knobs": "5.0.0-beta.2",
-    "@storybook/addon-options": "5.0.0-beta.2",
-    "@storybook/react": "5.0.0-beta.2",
+    "@storybook/addon-actions": "^5.0.7",
+    "@storybook/addon-info": "^5.0.7",
+    "@storybook/addon-knobs": "^5.0.7",
+    "@storybook/addon-options": "^5.0.7",
+    "@storybook/react": "^5.0.7",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-emotion": "^10.0.6",
@@ -56,7 +57,6 @@
     "prettier-standard": "^9.1.1",
     "standard": "^12.0.1",
     "standard-loader": "^6.0.1",
-    "uglifyjs-webpack-plugin": "^2.1.1",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14",
@@ -66,7 +66,9 @@
     "@emotion/core": "^10.0.6",
     "@emotion/styled": "^10.0.6",
     "emotion-theming": "^10.0.7",
+    "node-fetch": "^2.4.1",
     "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "react-dom": "^16.8.1",
+    "react-router-dom": "^5.0.0"
   }
 }

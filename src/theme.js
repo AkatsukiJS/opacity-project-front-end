@@ -20,16 +20,38 @@ export default {
     Ropa: 'Ropa Sans, serif'
   },
   fontSize: {
-    Small: '12px',
-    Medium: '16px',
-    Bigger: '22px'
+    Small: '0.85rem',
+    Medium: '1rem',
+    Large: '1.25rem',
+    XLarge: '1.5rem'
+  },
+  iconSize: {
+    Small: '1rem',
+    Medium: '1.5rem',
+    Large: '2.3rem'
+  },
+  selectSize: {
+    Small: '0.25rem',
+    Medium: '0.5rem',
+    Large: '1rem'
   },
   borderRadius: {
     Small: '4px',
     Medium: '8px'
   },
+  borderSize: {
+    TabBar: '1px',
+    RadioButton: '2px'
+  },
   boxShadow: {
     Container: '0px 3px 2px rgba(79, 79, 79, 0.25)',
-    Button: '0px 1px 4px #9F9F9F'
+    Button: '0px 1px 3px -1px #9F9F9F'
+  },
+  padding: {
+    Container: {
+      Small: '1rem',
+      Medium: '1.5rem',
+      Large: '2rem'
+    }
   }
 }

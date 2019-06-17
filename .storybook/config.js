@@ -21,9 +21,7 @@ addDecorator(
   })
 )
 
-addDecorator(
-  story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>
-)
+addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>)
 
 const req = require.context('../src/components', true, /.stories.js$/)
 function loadStories () {
@@ -35,7 +33,7 @@ addDecorator(withKnobs)
 addParameters({
   options: {
     name: 'Opacity Project',
-    addonPanelInRight: true
+    url: 'https://github.com/AkatsukiJS/opacity-project-front-end'
   }
 })
 
